@@ -72,3 +72,9 @@ code()
   </ItemGroup>
 </Project>
 
+7. Run the script. You can check the Logs and it should look similar to below
+[Azure Log](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%201%20-%20Gmail%20API%20and%20oAuth/Resources/Azure4.png)
+8. Modify the timer to run once a day.  Set the cron expression to run at 11pm.
+[CRON](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%201%20-%20Gmail%20API%20and%20oAuth/Resources/Azure5.png)
+
+You are now ready to go to the next step
