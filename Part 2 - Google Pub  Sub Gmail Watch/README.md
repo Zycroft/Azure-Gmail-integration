@@ -15,7 +15,6 @@
 We will now programaticly set a subscription watch account on the Gmail inbox. This will allow us later to have a subscription that will get notified when mail arrives.  We will add the code to the last part to create the watch account once a day (the watch account expires).  Add this code to the bottom of the function that we created in Part 1.
 
 code()
-    // Create Gmail watch on inbox
     WatchRequest body = new WatchRequest()
     {
         TopicName = sTopicName,
