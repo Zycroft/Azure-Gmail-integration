@@ -2,7 +2,7 @@
 
 ## Create a Google Cloud Platform project
 
-1. Got to https://console.cloud.google.com and sign in with your Google account
+1. Go to https://console.cloud.google.com and sign in with your Google account
 2. Click "Select a project" and then "New Project"
 
 ![Create Project](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%201%20-%20Gmail%20API%20and%20oAuth/Resources/GCP1.png?raw=true)
@@ -10,7 +10,7 @@
 
 ## Enable Gmail API
 
-1. Goto the API & Services - Library
+1. Go to the API & Services - Library
 
 ![Project API](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%201%20-%20Gmail%20API%20and%20oAuth/Resources/GCP2.png?raw=true)
 2. Search "Gmail" and enable the API
