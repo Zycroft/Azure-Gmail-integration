@@ -6,10 +6,10 @@
 2. Make sure your project is selected on the top bar
 3. Select Enable API
 
-![Create PubSub](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%201%20-%20Gmail%20API%20and%20oAuth/Resources/GCP1.png?raw=true)
+![Create PubSub](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%202%20-%20Google%20Pub%20%20Sub%20Gmail%20Watch/Resources/GCP1.png?raw=true)
 3. Select create a topic and give it a name like "GmailNot". You should end up with something like below
 
-![Create Topic](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%201%20-%20Gmail%20API%20and%20oAuth/Resources/GCP2.png?raw=true)
+![Create Topic](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%202%20-%20Google%20Pub%20%20Sub%20Gmail%20Watch/Resources/GCP2.png?raw=true)
 
 ## Add Pub Watch to Gmail account
 
@@ -33,8 +33,10 @@ code()
     {
         var err = e;
     }
+
 1. Run the Modified code and the Logs should look like below
-![Azure Log](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%201%20-%20Gmail%20API%20and%20oAuth/Resources/Azure1.png?raw=true)
+
+![Azure Log](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%202%20-%20Google%20Pub%20%20Sub%20Gmail%20Watch/Resources/Azure1.png?raw=true)
 
 2. If sucessful you should now have the publish side of the Pub/Sub Project setup
 
@@ -45,13 +47,14 @@ We will now create a trigger function that subscribes to the published Gmail not
 1. Create a new Azure Http trigger function with "Anonymous" Authorization. We are only doing this for tutorial purposes a production application should use a Function key. Save the function URL for use later
 2. Goto the topic in Google Cloud Console select "Create Subscription"
 
-![Create Topic](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%201%20-%20Gmail%20API%20and%20oAuth/Resources/GCP3.png?raw=true)
+![Create Topic](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%202%20-%20Google%20Pub%20%20Sub%20Gmail%20Watch/Resources/GCP3.png?raw=true)
 
 3. Domain Ownership Validation - We now need to show that we own the HttpEnd point we are going to call for our subscription.  We do this by putting a file in the Azure function directory that Google can verify.  Go to the folling site <https://search.google.com/search-console>
 4. Select URL prefix and paste in the Azure function URL you had saved in step 1. e.g. <https://gmailtest.azurewebsites.net/>
-5. Download the html file. 
+5. Download the html file.
 
-![Verify](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%201%20-%20Gmail%20API%20and%20oAuth/Resources/GCP5.png?raw=true)
+![Verify](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%202%20-%20Google%20Pub%20%20Sub%20Gmail%20Watch/Resources/GCP5.png?raw=true)
+
 6. Stay on the Verify ownership page as we will come back to verify.
 7. Google is going to the url provided on the verification page.  Azure needs to be able to serve up that page. e.g. <https://gmailtest.azurewebsites.net/api/Gmail/google8c5c0e99c5320045.html>
 8. Create Validation function to serve up the validation page. Name the fuction "Validation" and give it anonymous access
@@ -72,13 +75,19 @@ Code()
     }
 6. To upload the verification html file go to view files and select upload
 7. Create proxy for the validation html file
-![Azure Log](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%201%20-%20Gmail%20API%20and%20oAuth/Resources/Azure3.png?raw=true)
+
+![Azure Log](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%202%20-%20Google%20Pub%20%20Sub%20Gmail%20Watch/Resources/Azure3.png?raw=true)
+
 8. Go back to Google Search Console and verify the site ownership
 
 ## Subsribe to notification with Azure Http trigger function
 
-8. Create the subscription as shown below
+8. Create the subscription as shown below.  The "End Point URL" should match your Azure Http trigger function you created earlier.
 
-![Create Topic](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%201%20-%20Gmail%20API%20and%20oAuth/Resources/GCP4.png?raw=true)
+![Create Topic](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%202%20-%20Google%20Pub%20%20Sub%20Gmail%20Watch/Resources/GCP4.png?raw=true)
+
+9. Open your Azure trigger function and watch the Logs.  Send a email to the gmail account after a few seconds the Azure function Log should look like below.  You are now triggering the function evertime a new email is recieved.
+
+![Azure Log2](https://github.com/Zycroft/Azure-Gmail-integration/blob/master/Part%202%20-%20Google%20Pub%20%20Sub%20Gmail%20Watch/Resources/Azure4.png?raw=true)
 
 You are now ready to go to the next step
